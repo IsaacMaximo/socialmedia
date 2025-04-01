@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Processando Callback</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toda a lógica agora está dentro desta função
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            const error = urlParams.get('error');
+
+            function handleError(message) {
+                console.error(message);
+                localStorage.setItem('spotify_auth_error', message);
+                window.location.href = 'index.html';
+            }
+
+            function handleSuccess(data) {
+                localStorage.setItem('spotify_access_token', data.access_token);
+                if (data.refresh_token) {
+                    localStorage.setItem('spotify_refresh_token', data.refresh_token);
+                }
+                window.location.href = 'index.html';
+            }
+
+            if (error) {
+                handleError(`Erro do Spotify: ${error}`);
+                return; // Agora este return está dentro de uma função
+            }
+
+            if (!code) {
+                handleError("Nenhum código de autorização recebido");
+                return;
+            }
+
+            const codeVerifier = localStorage.getItem('code_verifier');
+            if (!codeVerifier) {
+                handleError("Code verifier não encontrado");
+                return;
+            }
+
+            fetch('http://localhost:3000/api/spotify-token', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    code: code,
+                    code_verifier: codeVerifier
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                handleSuccess(data);
+            })
+            .catch(error => {
+                handleError(`Falha na autenticação: ${error.message}`);
+            });
+        });
+    </script>
+</head>
+<body>
+    <p>Processando autenticação...</p>
+</body>
+</html>
