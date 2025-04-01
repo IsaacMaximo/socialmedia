@@ -99,6 +99,9 @@
             <input class="TextoPesquisa" id="search-bar" type="search" placeholder="Pesquisa v0.01">
         </nav>
         <br>
+        <?php
+        
+        ?>
     </main>
 
 
@@ -209,7 +212,7 @@
 
 
 <style>
-    *{outline: 1px solid rgb(80, 126, 66);font-weight: normal;text-transform: none;text-decoration: none;font-style: normal;box-sizing: border-box;margin: 0;padding: 0;list-style: none;text-decoration: none; font-family: "Kanit", sans-serif;font-weight: 200;font-style: normal;}
+    *{outline: 1px solid rgba(80, 126, 66, 0);font-weight: normal;text-transform: none;text-decoration: none;font-style: normal;box-sizing: border-box;margin: 0;padding: 0;list-style: none;text-decoration: none; font-family: "Kanit", sans-serif;font-weight: 200;font-style: normal;}
     
     body{padding-left: 250px;padding-bottom: 120px;font-size: 1rem;background-color: #ffffff;padding: 3vh 0vw; margin: 0;}
     
