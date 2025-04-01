@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image" href="assets/imgs/IconNoBG.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+                        <!-- Fonte !-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <aside id="menu-lateral">
+        <button>
+            <div id="perfil-usuario">
+                <ul id="ul-PerfildoUsuario">
+                    <img src="assets/imgs/user-avatar.png" alt="IMG_error">
+                    <li id="ul-perfil-usuario">
+                        <ul id="ul-PerfildoUsuario-Escrita">
+                            <li id="li-PerfildoUsuario-Nome">
+                                <span class="UserName" id="Nome_do_Usuario">TesteNome123</span>
+                            </li>
+
+                            <li id="li-PerfildoUsuario-Arroba">
+                                <span class="Texto2" id="Id_do_Usuario">@TesteNM</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </button>
+        <div id="itens-menu-lateral">
+            <ul id="ul-itens-menu-lateral">
+                
+                
+                <li id="li-ul-Aba-Comunidade">
+                    <button>
+                        <ul class="ul-Aba" id="ul-Aba-Comunidade">
+                            <img class="img-Aba" src="assets/imgs/Users.svg" alt="">
+                            <span class="TextoImportante" id="span-Comunidade">Comunidade</span>
+                        </ul>
+                    </button>
+                </li>
+
+                <li id="li-ul-Aba-Mensagens">
+                    <button>
+                        <ul class="ul-Aba" id="ul-Aba-Mensagens">
+                            <img class="img-Aba" src="assets/imgs/Message circle.svg" alt="">
+                            <span class="TextoImportante" id="span-Mensagens">Mensagens</span>
+                        </ul>
+                    </button>
+                </li>
+
+                <li id="li-ul-Aba-Discovery">
+                    <button>
+                        <ul class="ul-Aba" id="ul-Aba-Discovery">
+                            <img class="img-Aba" src="assets/imgs/Compas.svg" alt="">
+                            <span class="TextoImportante" id="span-Discovery">Discovery</span>
+                        </ul>
+                    </button>
+                </li>
+
+                <li id="li-ul-Aba-Playlists">
+                    <button>
+                        <ul class="ul-Aba" id="ul-Aba-Playlists">
+                            <img class="img-Aba" src="assets/imgs/Playlist.svg" alt="">
+                            <span class="TextoImportante" id="span-Playlists">Playlists</span>
+                        </ul>
+                    </button>
+                </li> 
+
+                <li id="li-ul-Aba-Projeto">
+                    <button>
+                        <ul class="ul-Aba" id="ul-Aba-Projeto">
+                            <img class="img-Aba" src="assets/imgs/Info circle.svg" alt="">
+                            <span class="TextoImportante" id="span-Projeto">Projeto</span>
+                        </ul>
+                    </button>
+                </li>
+
+                <li id="li-info-PAP">
+                    <span class="Texto2" id="span-info-pap">Trabalho teste para PAP(Prova de Aptidão Profissional)</span>
+
+                </li>
+
+                <li id="li-info-vers">
+                    <span class="Textoinfo" id="span-info-vers">v0.01</span>
+                </li>
+
+            </ul>
+        </div>
+    </aside>
+
+    
+
+    <main id="content1">
+        <nav id="pesquisa">
+            <input class="TextoPesquisa" id="search-bar" type="search" placeholder="Pesquisa v0.01">
+        </nav>
+        <br>
+    </main>
+
+
+    <!--
+    <nav id="aba-direita">
+        <img class="img-Aba" src="assets/imgs/Home.svg" alt="">
+        <img class="img-Aba" src="assets/imgs/Coração.svg" alt="">
+        <img class="img-Aba" src="assets/imgs/Mail.svg" alt="">
+        <img class="img-Aba" src="assets/imgs/Settings.svg" alt="">
+    </nav>
+    -->
+    
+    
+
+
+
+
+
+
+
+    <footer>
+        <ul id="InfoMusica">
+            <li><img id="Musica-Imagem" src="assets/imgs/Ellipse 1(1).png" alt=""></li>
+            <li><ul>
+                <li id="Musica-Nome">
+                    <span class="UserName" id="Musica-Nome-span">KeepCalm</span>
+                </li>
+                <li id="Musica-Artista">
+                    <span class="Texto2" id="Musica-Artista-span">LeandroJose</span>
+                </li>
+            </li></ul>
+            </ul>
+        <nav id="Player-Musica">
+
+            <audio id="musica-audio" src="PARYLEAK - como a internet e a felicidade morreram e eu nem percebi.mp3"></audio>
+
+            <ul class="BotoesMusica-Default">
+                <li class="MusicaBotao">
+                    <button id="Player-Musica-Botao-Anterior-btn">
+                        <img class="BotoesMusica-Default-img" src="assets/imgs/anterior.svg" alt="">
+                    </button>
+                </li>
+                <li class="MusicaBotao">
+                    <button id="Player-Musica-Botao-Play-btn">
+                        <img class="BotoesMusica-Default-img" id="Player-Musica-Botao-Play-btn-img" src="assets/imgs/Play.svg" alt="">
+                    </button>
+                </li>
+                <li class="MusicaBotao" >
+                    <button id="Player-Musica-Botao-Seguinte-btn">
+                        <img class="BotoesMusica-Default-img" src="assets/imgs/seguinte.svg" alt="">
+                    </button>
+                </li>
+                <li class="MusicaBotao">
+                    <button id="Player-Musica-Botao-Retry-btn">
+                        <img class="BotoesMusica-Default-img" src="assets/imgs/retry.svg" alt="">
+                    </button>
+                </li>
+                <li class="MusicaBotao">
+                    <button id="Player-Musica-Botao-Aleatorio-btn">
+                        <img class="BotoesMusica-Default-img" src="assets/imgs/Swap.svg" alt="">
+                    </button>
+                </li>
+            </ul>
+            
+            
+            <ul id="Player-Musica-Botao-ProgressiveBar-ul">
+                <li>
+                    <span class="TextoImportante" id="ProgressiveBar-Tempo-Atual">--:--</span>
+                </li>
+                <li>
+                    <div id="ProgressiveBar-container">
+                        <div id="Player-Musica-Botao-ProgressiveBar-div"></div>
+                    </div>
+                </li>
+                <li>
+                    <span class="TextoImportante" id="ProgressiveBar-Tempo-Total">--:--</span>
+                </li>
+            </ul>
+            
+            <ul class="BotoesMusica-Default">
+                <li class="MusicaBotao" id="Player-Musica-Botao-Volume">
+                    <button id="btn-volume">
+                        <img id="volume-icon" class="BotoesMusica-Default-img" src="assets/imgs/Volume down.svg" alt="">
+                    </button>
+                    <div id="slider-div">
+                        <input type="range" id="volume-slider" min="0" max="1" step="0.007" value=".5">
+                    </div>
+                </li>
+                <li class="MusicaBotao" id="Player-Musica-Botao-Favoritos">
+                    <button>
+                        <img class="BotoesMusica-Default-img" src="assets/imgs/Coração.svg" alt="">
+                    </button>
+                    </li>
+                <li class="MusicaBotao" id="Player-Musica-Botao-Partilhar">
+                    <button>
+                        <img class="BotoesMusica-Default-img" src="assets/imgs/Share.svg" alt="">
+                    </button>
+                    </li>
+                <li class="MusicaBotao" id="Player-Musica-Botao-AddPlaylist">
+                    <button>
+                        <img class="BotoesMusica-Default-img" src="assets/imgs/Receipt.svg" alt="">
+                    </button>
+                    </li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+
+
+<style>
+    *{outline: 1px solid rgb(80, 126, 66);font-weight: normal;text-transform: none;text-decoration: none;font-style: normal;box-sizing: border-box;margin: 0;padding: 0;list-style: none;text-decoration: none; font-family: "Kanit", sans-serif;font-weight: 200;font-style: normal;}
+    
+    body{padding-left: 250px;padding-bottom: 120px;font-size: 1rem;background-color: #ffffff;padding: 3vh 0vw; margin: 0;}
+    
+    :root {
+        --preto-transparente: rgba(0, 0, 0, 0.7);
+        --letraArroba: rgba(0, 0, 0, 0.5);
+        --textoinfo: rgba(0, 0, 0, 0.2);
+        --Texto2: rgba(45, 45, 45, 0.6);
+        --aquele-azul: rgba(43, 63, 108, 0.5);
+        --pesquisa: rgba(0, 0, 0, 0.85);
+    }
+
+    #itens-menu-lateral{
+        display: flex;
+        width: fit-content;
+        height: 75vh;
+        flex-direction: column;
+        gap: 20px;
+        width: 230px;
+        border-right: 1px solid var(--aquele-azul);
+        padding: 0vw 3vh;
+    }
+    .TextoImportante{
+        font-weight: 600;
+        color: var(--preto-transparente);
+    }
+    .TextoPesquisa{
+        color: var(--pesquisa);
+        font-weight: 300;
+        font-size: 1.1rem;
+    }
+    .Textoinfo{
+        color: var(--textoinfo);
+    }
+    .Texto2{
+        color: var(--Texto2);
+        font-weight: 400;
+    }
+    .UserName{
+        font-weight: 600;
+    }
+    .ul-Aba{
+        display: flex;
+        align-items: center;
+        column-gap: 15px;
+        padding: 8px 12px;
+        border-radius: 5px;
+        transition: background 0.3s;
+        width: 100%;
+    }
+    .ul-Aba:hover, #perfil-usuario:hover {
+        background: #e0e0e0;
+        
+    }
+    #perfil-usuario{
+        padding: 10px;
+        margin-left: 10px;
+        transition: background 0.3s;
+        border-radius: 15px;
+        padding-right: 35px;
+    }
+
+    #ul-itens-menu-lateral{
+        display: flex;
+        flex-direction: column;
+        gap: 37px;
+        align-items: start;
+        height: 100%;
+        width: 100%;
+        margin-top: 3vh;
+    }
+    #ul-PerfildoUsuario{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    #ul-PerfildoUsuario-Escrita{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+    #ul-itens-menu-lateral img{
+        width: 32px;
+        height: 32px;
+    }
+    #modo-pap, #versao {
+        font-size: 14px;
+        color: var(--aquele-azul);
+        margin-top: 20px;
+    }
+    #ul-PerfildoUsuario img{
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+    }
+    #li-info-PAP{
+        width: 150px;
+        font-size: .9rem;
+        margin-top: auto;
+
+    }
+    #li-info-vers{
+        margin-top: auto;
+        padding-bottom: 15px;
+        font-size: 2.5rem;
+    }
+    #Player-Musica{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        gap: 50px;
+        justify-content: center;
+    }
+    #menu-lateral{
+        position: fixed;
+        width: 250px;
+    }
+
+    footer{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 120px;
+        background: rgba(32, 27, 78, 0);
+        
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        z-index: 900;
+        box-shadow: 0 0px 5px rgba(0, 0, 0, 0.1);
+    }
+    #InfoMusica {
+        min-width: 180px;
+        max-width: 250px;
+        flex-shrink: 0;
+        display: flex;
+        white-space: nowrap;
+        align-items: center;
+        min-width: 180px;
+        gap: 15px;
+        flex-shrink: 0;
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+        
+    #Musica-Imagem {
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        object-fit: cover;
+    }
+    
+    #Player-Musica {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 30px;
+    }
+    
+    .BotoesMusica-Default {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    #Player-Musica-Botao-ProgressiveBar-div {
+        height: 100%;
+        width: 0;
+        background-color: var(--aquele-azul);
+        border-radius: 2px;
+        position: relative;
+        transition: width 0.1s linear;
+    }
+
+    #Player-Musica-Botao-ProgressiveBar-div::before {
+        content: '';
+        position: absolute;
+        right: -6px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 12px;
+        height: 12px;
+        background-color: var(--aquele-azul);
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.2s;
+    }
+    #ProgressiveBar-container{
+        width: 100%;
+        height: 4px;
+        background-color: #e0e0e0;
+        border-radius: 2px;
+        cursor: pointer;
+        margin: 10px 0;
+    }
+    #ProgressiveBar-container:hover #Player-Musica-Botao-ProgressiveBar-div::before {
+        opacity: 1;
+    }
+    #Player-Musica-Botao-ProgressiveBar-ul {
+        flex-grow: 1;
+        max-width: 900px;
+        transition: max-width 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    #Player-Musica-Botao-ProgressiveBar-ul li:nth-child(2) {
+        flex-grow: 1;
+        min-width: 100px;
+    }
+    .BotoesMusica-Default-img {
+        width: 30px;
+        height: 30px;
+        transition: transform 0.2s;
+    }
+    
+    .MusicaBotao:hover .BotoesMusica-Default-img {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    #content1{
+        margin-left: 230px;
+        padding-left: 50px;
+        margin-top: 35px;
+    }
+    #search-bar{
+        width:75%;
+        border-radius: 15px;
+        border: none;
+        background-color: #D9D9D9;
+        height: 40px;
+        outline: none;
+        background-image: url('assets/imgs/Lupa.svg');
+        background-size: 20px 20px;
+        background-position: 8px center;
+        background-repeat: no-repeat;
+        padding-left: 45px;
+    }
+
+    button {
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        font: inherit;
+        cursor: pointer;
+    }
+
+    #Player-Musica-Botao-Volume{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        
+        
+    }
+    #btn-volume {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        position: relative;
+    }
+
+    #volume-slider {
+        width: 100px;
+        height: 4px;
+        cursor: pointer;
+        accent-color: var(--aquele-azul);
+        transform: rotate(-90deg);
+        margin: 0;
+        min-width: 100px; 
+        transform-origin: center;
+        transition: all 0.3s ease;
+    }
+    #volume-slider:hover {
+        transform: rotate(-90deg) scaleY(1.2);
+    }
+    #slider-div{
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        background-color: var(--aquele-azul);
+        height: 140px;
+        width: 40px;
+        z-index: 100; 
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+        padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        border: 1px solid var(--aquele-azul);
+        background-color: var(--aquele-azul);
+        backdrop-filter: blur(1px);
+        transition: all 0.15s ease-out;
+    }
+    #volume-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 16px;
+        height: 16px;
+        background: var(--aquele-azul);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    #volume-slider::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        background: var(--aquele-azul);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .MusicaBotao:hover #slider-div,
+    .MusicaBotao:focus-within #slider-div {
+        opacity: 1;
+        visibility: visible;
+        transition: all 0.3s ease-out;
+    }
+
+    
+    @media (min-width: 1200px) {
+        #Player-Musica-Botao-ProgressiveBar-ul {
+            max-width: 800px;
+        }
+    }
+    @media (max-width: 900px) {
+        #Player-Musica-Botao-ProgressiveBar-div {
+            width: 200px;
+        }
+        
+        .BotoesMusica-Default {
+            gap: 10px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        footer {
+            height: 70px;
+            padding: 0 15px;
+        }
+        
+        #InfoMusica {
+            min-width: 160px;
+            gap: 10px;
+        }
+        
+        #Musica-Imagem {
+            width: 40px;
+            height: 40px;
+        }
+        
+        #Player-Musica {
+            gap: 10px;
+        }
+        
+        #Player-Musica-Botao-ProgressiveBar-div {
+            width: 150px;
+        }
+    }
+    
+    @media (max-width: 600px) {
+        footer {
+            height: 60px;
+            padding: 0 10px;
+        }
+        
+        #InfoMusica {
+            min-width: 120px;
+        }
+        
+        #Musica-Nome-span, #Musica-Artista-span {
+            display: none;
+        }
+        
+        #Player-Musica-Botao-ProgressiveBar-ul span {
+            display: none;
+        }
+        
+        #Player-Musica-Botao-ProgressiveBar-div {
+            width: 100px;
+        }
+        
+        .BotoesMusica-Default-img {
+            width: 18px;
+            height: 18px;
+        }
+    }
+    
+    @media (max-width: 400px) {
+        #Player-Musica-Botao-ProgressiveBar-div {
+            display: none;
+        }
+        
+        #Player-Musica {
+            justify-content: flex-end;
+        }
+    }
+</style>
+
+
+<script>
+const musica = document.getElementById('musica-audio');
+const playBtn = document.getElementById('Player-Musica-Botao-Play-btn');
+const stopBtn = document.getElementById('Player-Musica-Botao-Anterior-btn');
+const IconPlay = document.getElementById('Player-Musica-Botao-Play-btn-img');
+const TempoAtual = document.getElementById('ProgressiveBar-Tempo-Atual');
+const TempoTotal = document.getElementById('ProgressiveBar-Tempo-Total');
+const ProgressiveBar_container = document.getElementById('ProgressiveBar-container');
+const ProgressiveBar = document.getElementById('Player-Musica-Botao-ProgressiveBar-div');
+
+function formatarTempo(segundos) {
+    if (isNaN(segundos)) return "--:--";
+    const min = Math.floor(segundos / 60);
+    const seg = Math.floor(segundos % 60);
+    return `${min}:${seg < 10 ? '0' : ''}${seg}`;
+}
+
+function verificarMetadados() {
+    if (musica.readyState > 0) {
+        console.log('Metadados disponíveis:', musica.duration);
+        TempoTotal.innerText = formatarTempo(musica.duration);
+    }
+}
+
+function atualizarTempoAtual() {
+    TempoAtual.textContent = formatarTempo(musica.currentTime);
+}
+
+musica.addEventListener('timeupdate', atualizarBarraProgresso);
+
+let ultimoTempoAtual = -1;
+function animarTempo() {
+    if (Math.abs(musica.currentTime - ultimoTempoAtual) >= 0.5) { // Atualiza a cada ~0.5s
+        atualizarTempoAtual();
+        ultimoTempoAtual = musica.currentTime;
+    }
+    requestAnimationFrame(animarTempo);
+}
+musica.addEventListener('play', () => {
+    requestAnimationFrame(animarTempo);
+});
+atualizarTempoAtual();
+
+musica.addEventListener('loadedmetadata', () => {
+    console.log('Evento: Metadata carregado!', musica.duration);
+    TempoTotal.innerText = formatarTempo(musica.duration);
+});
+
+verificarMetadados();
+
+let tentativas = 0;
+const intervalo = setInterval(() => {
+    if (musica.readyState > 0 || tentativas > 20) {
+        clearInterval(intervalo);
+        verificarMetadados();
+    }
+    tentativas++;
+}, 100);
+
+
+function atualizarIcone() {
+    if (musica.paused) {
+        console.log("PAUSADO");
+        IconPlay.src = 'assets/imgs/Play.svg';
+    } else {
+        console.log("ON");
+        IconPlay.src = 'assets/imgs/Pause.svg';
+    }
+}
+
+playBtn.addEventListener('click', () => {
+    if (musica.paused) {
+        musica.play().catch(e => console.log("Erro ao reproduzir:", e));
+    } else {
+        musica.pause();
+        console.log(musica.currentTime);
+    }
+    atualizarIcone();
+});
+
+stopBtn.addEventListener('click', () => {
+    musica.pause();
+    musica.currentTime = 0;
+    atualizarIcone();
+});
+
+atualizarIcone();
+
+musica.addEventListener('play', atualizarIcone);
+musica.addEventListener('pause', atualizarIcone);
+
+
+
+function atualizarBarraProgresso() {
+    if (!isDragging) { // Só atualiza automaticamente quando não estiver arrastando
+        const progresso = (musica.currentTime / musica.duration) * 100;
+        ProgressiveBar.style.width = `${progresso}%`;
+    }
+}
+
+function handleProgressiveBarClick(e) {
+    if (!isNaN(musica.duration)) {
+        const Click_Local = e.offsetX;
+        const Barra_Tamanho = ProgressiveBar_container.clientWidth;
+        const TempoFinal_Click = (Click_Local / Barra_Tamanho) * musica.duration;
+        musica.currentTime = TempoFinal_Click;
+    }
+}
+
+musica.addEventListener('timeupdate', () => {
+    atualizarTempoAtual();
+    atualizarBarraProgresso();
+});
+
+ProgressiveBar_container.addEventListener('click', handleProgressiveBarClick);
+
+let isDragging = false;
+let novoTime = 0;
+
+ProgressiveBar_container.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    
+    const rect = ProgressiveBar_container.getBoundingClientRect();
+    const percent = (e.clientX - rect.left) / rect.width;
+    novoTime = percent * musica.duration;
+    
+    // Atualiza visualmente mas não altera o áudio ainda
+    ProgressiveBar.style.width = `${percent * 100}%`;
+    ProgressiveBar.style.transition = 'none'; // Remove animação durante arraste
+    
+    e.preventDefault();
+});
+
+
+document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    
+    const rect = ProgressiveBar_container.getBoundingClientRect();
+    const percent = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
+    novoTime = percent * musica.duration;
+    
+    // Atualiza apenas visualmente
+    ProgressiveBar.style.width = `${percent * 100}%`;
+});
+
+document.addEventListener('mouseup', () => {
+    if (isDragging) {
+        isDragging = false;
+        ProgressiveBar.style.transition = ''; // Restaura animação
+        
+        // Só atualiza o tempo da música AO SOLTAR
+        musica.currentTime = novoTime;
+    }
+});
+const btnVolume = document.getElementById('btn-volume');
+const volumeSlider = document.getElementById('volume-slider');
+const volumeIcon = document.getElementById('volume-icon');
+
+let volumeSalvo = .5;
+
+volumeSlider.addEventListener('input', (e) => {
+    const volume = e.target.value;
+    musica.volume = volume;
+    atualizarIconeVolume(volume);
+});
+
+btnVolume.addEventListener('click', () => {
+    if (musica.volume > 0) {
+        volumeSalvo = musica.volume;
+        musica.volume = 0;
+        volumeSlider.value = 0;
+    } else {
+        musica.volume = volumeSalvo;
+        volumeSlider.value = volumeSalvo;
+    }
+    atualizarIconeVolume(musica.volume);
+});
+
+function atualizarIconeVolume(volume) {
+    if (volume == 0) {
+        volumeIcon.src = 'assets/imgs/Volume off 1.svg';
+    } else if (volume < 0.5) {
+        volumeIcon.src = 'assets/imgs/Volume down.svg';
+    } else {
+        volumeIcon.src = 'assets/imgs/Volume up.svg';
+    }
+}
+
+musica.volume = .5;
+atualizarIconeVolume(1);
+
+function carregarVolume() {
+    const volume = localStorage.getItem('volume');
+    if (volume) {
+        musica.volume = volume;
+        volumeSlider.value = volume;
+        atualizarIconeVolume(volume);
+    }
+}
+
+function salvarVolume() {
+    localStorage.setItem('volume', musica.volume);
+}
+
+window.addEventListener('load', carregarVolume);
+volumeSlider.addEventListener('change', salvarVolume);
+</script>
+
+</html>
