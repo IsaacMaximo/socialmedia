@@ -18,15 +18,15 @@
         <div id="logado">
             <div id="perfil-usuario">
                 <ul id="ul-PerfildoUsuario">
-                    <img id="ImgUser" src="assets/imgs/user-avatar.png" alt="IMG_error">
+                    <img id="ImgUser" src="assets/imgs/Users.svg" alt="IMG_error">
                     <li id="ul-perfil-usuario">
                         <ul id="ul-PerfildoUsuario-Escrita">
                             <li id="li-PerfildoUsuario-Nome">
-                                <span class="UserName" id="Nome_do_Usuario">TesteNome123</span>
+                                <span class="UserName" id="Nome_do_Usuario">User</span>
                             </li>
 
                             <li id="li-PerfildoUsuario-Arroba">
-                                <span class="Texto2" id="Id_do_Usuario">@TesteNM</span>
+                                <span class="Texto2" id="Id_do_Usuario">@User-Id</span>
                             </li>
                         </ul>
                     </li>
@@ -100,9 +100,17 @@
 
     <main id="content1">
         <nav id="pesquisa">
-            <input class="TextoPesquisa" id="search-bar" type="search" placeholder="Pesquisa v0.01">
+            <input class="TextoPesquisa" id="search-bar" type="text" placeholder="Pesquisa v0.01">
         </nav>
         <br>
+        <div>
+            <span class="TextoPesquisa">Recomandações:</span>
+            <ul id="Recomendacoesdbosta">
+                <li id="testemn">
+
+                </li>
+            </ul>
+        </div>
     </main>
 
 
@@ -274,6 +282,17 @@
         transition: background 0.3s;
         border-radius: 15px;
         padding-right: 35px;
+    }
+    #Id_do_Usuario{
+        font-size: .65rem;
+    }
+
+    #ImgUser {
+    clip-path: circle(50% at 50% 50%);
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    aspect-ratio: 1/1;
     }
 
     #ul-itens-menu-lateral{
@@ -651,9 +670,66 @@
 </style>
 
 
-<script src="botoes.js"></script>
 <script type="module" src="http://localhost/socialmedia/api/OAuth.js"></script>
-<script src="http://localhost/socialmedia/api/login.js"></script>
+<script type="module" src="http://localhost/socialmedia/api/login.js"></script>
+<script src="botoes.js"></script>
 
+<script type="module">
+    import { PesquisaSpotify } from './SpotifySearch.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('search-bar');
+        const resultsContainer = document.getElementById('testemn');
+
+        if (!searchInput || !resultsContainer) {
+            console.error('Elementos não encontrados');
+            return;
+        }
+
+        searchInput.addEventListener('keydown', async (event) => {
+            if (event.key === 'Enter') {
+                const query = searchInput.value.trim();
+                
+                if (!query) {
+                    resultsContainer.innerHTML = '<p style="color:#666">Invalido</p>';
+                    return;
+                }
+
+                try {
+                    resultsContainer.innerHTML = '<p style="color:#1DB954; cursor: wait;">Pesquisando...</p>';
+                    const tracks = await PesquisaSpotify(query, 5);
+                    
+                    if (tracks?.length > 0) {
+                        resultsContainer.innerHTML = tracks.map(track => `
+                            <div style="margin-bottom:15px;">
+                                <strong>${track.name}</strong><br>
+                                <small>Artista: ${track.artists.map(a => a.name).join(', ')}</small><br>
+                                <small>Álbum: ${track.album.name}</small>
+                                ${track.preview_url ? 
+                                    `<div style="margin-top:5px">
+                                        <audio controls src="${track.preview_url}" style="width:100%"></audio>
+                                    </div>` : 
+                                    '<div style="color:#888;font-size:smaller">Prévia não disponível</div>'}
+                            </div>
+                        `).join('');
+                    } else {
+                        resultsContainer.innerHTML = '<p style="color:#666">Nenhum resultado encontrado</p>';
+                    }
+                } catch (error) {
+                    console.error('Erro na pesquisa:');
+                    resultsContainer.innerHTML = `
+                        <div style="color:red">
+                            Erro: ${error.message || 'Falha na pesquisa'}
+                        </div>
+                        ${localStorage.getItem('spotify_access_token') ? '' : 
+                         '<div style="color:orange">Faça login no Spotify primeiro</div>'}
+                    `;
+                }
+            }
+        });
+
+        searchInput.focus();
+    });
+</script>
 
 </html>

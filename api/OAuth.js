@@ -19,7 +19,6 @@ async function generateCodeChallenge(codeVerifier) {
         .replace(/\//g, '_');
 }
 
-// Event listener para o botão de login
 document.getElementById('loginBtn').addEventListener('click', async () => {
     try {
         const codeVerifier = generateRandomString(128);
@@ -28,9 +27,9 @@ document.getElementById('loginBtn').addEventListener('click', async () => {
         const codeChallenge = await generateCodeChallenge(codeVerifier);
         
         const params = new URLSearchParams({
-            client_id: clientId, // Usando a constante definida acima
+            client_id: clientId,
             response_type: 'code',
-            redirect_uri: redirectUri, // Usando a constante definida acima
+            redirect_uri: redirectUri,
             scope: 'user-read-private user-read-email',
             code_challenge_method: 'S256',
             code_challenge: codeChallenge
@@ -43,41 +42,39 @@ document.getElementById('loginBtn').addEventListener('click', async () => {
     }
 });
 
-// Função para buscar perfil
-async function fetchProfile() {
-    const token = localStorage.getItem('spotify_access_token');
-    
-    if (!token) {
-        console.error('❌ Nenhum token encontrado. Faça login primeiro.');
-        return;
-    }
-
+export async function fetchProfile() {
     try {
-        const response = await fetch('https://api.spotify.com/v1/me', {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-
-        if (!response.ok) {
-            throw new Error(`Erro HTTP: ${response.status}`);
+      const token = localStorage.getItem('spotify_access_token');
+      
+      if (!token || token === 'undefined') {
+        console.error('Token inválido ou não encontrado');
+        return null;
+      }
+  
+      const response = await fetch('https://api.spotify.com/v1/me', {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
         }
+      });
 
-        const profile = await response.json();
-        console.log(profile)
-        console.log('%c✅ PERFIL DO SPOTIFY', 'color: #1DB954; font-weight: bold;');
-        console.log('👤 Nome:', profile.display_name);
-        console.log('📧 Email:', profile.email || 'Não disponível');
-        console.log('🆔 ID:', profile.id);
-        console.log('❤️ Seguidores:', profile.followers?.total || 0);
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Erro na API:', errorData);
         
-        if (profile.images?.[0]?.url) {
-            console.log('🖼️ Imagem:', profile.images[0].url);
-            console.log('%c ', `font-size: 100px; background: url(${profile.images[0].url}) no-repeat;`);
+        if (response.status === 401) {
+          localStorage.removeItem('spotify_access_token');
         }
-
-        console.log('🔗 Perfil público:', profile.external_urls.spotify);
         
+        return null;
+      }
+  
+      const profile = await response.json();
+      console.log('Dados brutos da API:', profile);
+      return profile;
+      
     } catch (error) {
-        console.error('%c❌ Erro ao buscar perfil:', 'color: red;', error);
+      console.error('Erro ao buscar perfil:', error);
+      return null;
     }
-}
-export { fetchProfile };
+  }
