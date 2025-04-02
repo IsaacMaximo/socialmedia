@@ -1,7 +1,6 @@
 const clientId = '575da6a8b4444e4187ba5b81924165f3'; // Seu Client ID
 const redirectUri = 'http://localhost/socialmedia/public/callback.html'; // Seu Redirect URI
 
-// Função para gerar string aleatória (não duplicada)
 function generateRandomString(length) {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
     return Array.from(crypto.getRandomValues(new Uint8Array(length)))
@@ -9,7 +8,6 @@ function generateRandomString(length) {
         .join('');
 }
 
-// Função para gerar o code challenge
 async function generateCodeChallenge(codeVerifier) {
     const digest = await crypto.subtle.digest(
         'SHA-256',
@@ -33,7 +31,7 @@ document.getElementById('loginBtn').addEventListener('click', async () => {
             client_id: clientId, // Usando a constante definida acima
             response_type: 'code',
             redirect_uri: redirectUri, // Usando a constante definida acima
-            scope: 'user-library-read',
+            scope: 'user-read-private user-read-email',
             code_challenge_method: 'S256',
             code_challenge: codeChallenge
         });
@@ -64,7 +62,7 @@ async function fetchProfile() {
         }
 
         const profile = await response.json();
-        
+        console.log(profile)
         console.log('%c✅ PERFIL DO SPOTIFY', 'color: #1DB954; font-weight: bold;');
         console.log('👤 Nome:', profile.display_name);
         console.log('📧 Email:', profile.email || 'Não disponível');
@@ -82,3 +80,4 @@ async function fetchProfile() {
         console.error('%c❌ Erro ao buscar perfil:', 'color: red;', error);
     }
 }
+export { fetchProfile };

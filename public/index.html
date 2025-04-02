@@ -12,15 +12,13 @@
 </head>
 <body>
     <aside id="menu-lateral">
-        <div id="logar">
+        <div id="nlogado">
             <button id="loginBtn"><span class="TextoImportante">Entrar com Spotify</span></button>
         </div>
         <div id="logado">
             <div id="perfil-usuario">
                 <ul id="ul-PerfildoUsuario">
-                    
-                    
-                    <img src="assets/imgs/user-avatar.png" alt="IMG_error">
+                    <img id="ImgUser" src="assets/imgs/user-avatar.png" alt="IMG_error">
                     <li id="ul-perfil-usuario">
                         <ul id="ul-PerfildoUsuario-Escrita">
                             <li id="li-PerfildoUsuario-Nome">
@@ -105,13 +103,6 @@
             <input class="TextoPesquisa" id="search-bar" type="search" placeholder="Pesquisa v0.01">
         </nav>
         <br>
-<<<<<<<< HEAD:public/index.html
-        <div id="profile"></div>
-========
-        <?php
-        
-        ?>
->>>>>>>> a58ddd92225201eedb629a01e7383936c9a8aa32:discovery.php
     </main>
 
 
@@ -553,7 +544,7 @@
     #logado{
         display: none;
     }
-    #logar{
+    #nlogado{
         width: 100%;
         display: flex;
         justify-content: center;
@@ -575,6 +566,10 @@
         
         color: rgba(43, 63, 108, 1);
     }
+    #sumiu{
+        display: none;
+    }
+
     
     @media (min-width: 1200px) {
         #Player-Musica-Botao-ProgressiveBar-ul {
@@ -657,6 +652,8 @@
 
 
 <script src="botoes.js"></script>
-<script src="http://localhost/socialmedia/api/OAuth.js"></script>
+<script type="module" src="http://localhost/socialmedia/api/OAuth.js"></script>
+<script src="http://localhost/socialmedia/api/login.js"></script>
+
 
 </html>
