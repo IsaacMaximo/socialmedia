@@ -1,3 +1,12 @@
+const { builder } = require("@netlify/functions");
+
+exports.handler = builder(async (event, context) => {
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: "Hello from Netlify Function!" }),
+  };
+});
+
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
