@@ -5,7 +5,6 @@
     <title>Processando Callback</title>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Toda a lógica agora está dentro desta função
             
             const urlParams = new URLSearchParams(window.location.search);
             const code = urlParams.get('code');
@@ -27,7 +26,7 @@
 
             if (error) {
                 handleError(`Erro do Spotify: ${error}`);
-                return; // Agora este return está dentro de uma função
+                return;
             }
 
             if (!code) {

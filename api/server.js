@@ -1,28 +1,15 @@
-const { builder } = require("@netlify/functions");
-
-exports.handler = builder(async (event, context) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ message: "Hello from Netlify Function!" }),
-  };
-});
-
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const fetch = require('node-fetch');
 
-// 1. Crie a aplicação Express
 const app = express();
-
-// 2. Prepare o cabeçalho de autenticação ANTES de usar
 const getAuthHeader = () => {
   return 'Basic ' + Buffer.from(
     `${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`
   ).toString('base64');
 };
 
-// 3. Configure o CORS corretamente
 const corsOptions = {
   origin: [
     'http://localhost',
@@ -36,10 +23,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
-// 4. Middlewares essenciais
 app.use(express.json());
 
-// 5. Rota para autenticação Spotify
 app.post('/api/spotify-token', async (req, res) => {
   try {
     console.log("Recebida requisição de token");
@@ -53,7 +38,7 @@ app.post('/api/spotify-token', async (req, res) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': getAuthHeader() // Usando a função aqui
+        'Authorization': getAuthHeader()
       },
       body: new URLSearchParams({
         grant_type: 'authorization_code',
@@ -78,12 +63,10 @@ app.post('/api/spotify-token', async (req, res) => {
   }
 });
 
-// 6. Rota de saúde
 app.get('/health', (req, res) => {
   res.send('Servidor operacional');
 });
 
-// 7. Inicie o servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando na porta ${PORT}`);

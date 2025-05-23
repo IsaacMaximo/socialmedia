@@ -1,5 +1,5 @@
-const clientId = '575da6a8b4444e4187ba5b81924165f3'; // Seu Client ID
-const redirectUri = 'http://localhost/socialmedia/public/callback.html'; // Seu Redirect URI
+const clientId = '575da6a8b4444e4187ba5b81924165f3'; // Client ID
+const redirectUri = 'http://localhost/socialmedia/public/callback.html'; // Redirect URI
 
 function generateRandomString(length) {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
@@ -30,9 +30,10 @@ document.getElementById('loginBtn').addEventListener('click', async () => {
             client_id: clientId,
             response_type: 'code',
             redirect_uri: redirectUri,
-            scope: 'user-read-private user-read-email',
+            scope: 'user-read-private user-read-email user-read-playback-state',
             code_challenge_method: 'S256',
-            code_challenge: codeChallenge
+            code_challenge: codeChallenge,
+            show_dialog: 'true'
         });
 
         window.location.href = `https://accounts.spotify.com/authorize?${params}`;
@@ -46,7 +47,7 @@ export async function fetchProfile() {
     try {
       const token = localStorage.getItem('spotify_access_token');
       
-      if (!token || token === 'undefined') {
+      if (!token || token === 'undefined'){
         console.error('Token inválido ou não encontrado');
         return null;
       }
@@ -70,7 +71,7 @@ export async function fetchProfile() {
       }
   
       const profile = await response.json();
-      console.log('Dados brutos da API:', profile);
+      console.log('Dados brutos do User -ApagarDPS:', profile);
       return profile;
       
     } catch (error) {
@@ -78,3 +79,42 @@ export async function fetchProfile() {
       return null;
     }
   }
+	export async function getCurrentPlayback() {
+    try {
+        const token = localStorage.getItem('spotify_access_token');
+        if (!token || token === 'undefined') {
+            console.error('Token inválido ou não encontrado');
+            return null;
+        }
+
+        const response = await fetch('https://api.spotify.com/v1/me/player', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        // Se nada estiver tocando (204 No Content)
+        if (response.status === 204) {
+            console.log('Nenhuma música está tocando no momento.');
+            return null;
+        }
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Erro na API:', errorData);
+            
+            if (response.status === 401) {
+                localStorage.removeItem('spotify_access_token');
+                console.log('Token expirado. Redirecionando para login...');
+            }
+            
+            return null;
+        }
+
+        const playerState = await response.json();
+        console.log('Estado do player:', playerState);
+        return playerState;
+
+    } catch (error) {
+        console.error('Erro ao buscar estado do player:', error);
+        return null;
+    }
+}

@@ -1,0 +1,532 @@
+*{outline: 1px solid rgba(248, 248, 248, 0);font-weight: normal;text-transform: none;text-decoration: none;font-style: normal;box-sizing: border-box;margin: 0;padding: 0;list-style: none;text-decoration: none; font-family: "Kanit", sans-serif;font-weight: 200;font-style: normal;}
+    
+body{padding-left: 250px;padding-bottom: 120px;font-size: 1rem;background-color: #ffffff;padding: 3vh 0vw; margin: 0;}
+
+:root {
+    --preto-transparente: rgba(0, 0, 0, 0.7);
+    --letraArroba: rgba(0, 0, 0, 0.5);
+    --textoinfo: rgba(0, 0, 0, 0.2);
+    --Texto2: rgba(45, 45, 45, 0.6);
+    --aquele-azul: rgba(43, 63, 108, 0.5);
+    --pesquisa: rgba(0, 0, 0, 0.85);
+}
+
+#itens-menu-lateral{
+    display: flex;
+    width: fit-content;
+    height: 75vh;
+    flex-direction: column;
+    gap: 20px;
+    width: 230px;
+    border-right: 1px solid var(--aquele-azul);
+    padding: 0vw 3vh;
+}
+.TextoImportante{
+    font-weight: 600;
+    color: var(--preto-transparente);
+}
+.TextoPesquisa{
+    color: var(--pesquisa);
+    font-weight: 300;
+    font-size: 1.1rem;
+}
+.Textoinfo{
+    color: var(--textoinfo);
+}
+.Texto2{
+    color: var(--Texto2);
+    font-weight: 400;
+}
+.TextoTitulo{
+    font-size: xx-large;
+    font-weight:bold;
+    color: var(--preto-transparente);
+    
+}
+.UserName{
+    font-weight: 600;
+}
+.ul-Aba{
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background 0.3s;
+    width: 100%;
+}
+.ul-Aba:hover, #perfil-usuario:hover {
+    background: #e0e0e0;
+    
+}
+#perfil-usuario{
+    padding: 10px;
+    margin-left: 10px;
+    transition: background 0.3s;
+    border-radius: 15px;
+    padding-right: 35px;
+}
+#Id_do_Usuario{
+    font-size: .65rem;
+}
+
+.ImgUser {
+    clip-path: circle(50% at 50% 50%);
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    }
+
+#ul-itens-menu-lateral{
+    display: flex;
+    flex-direction: column;
+    gap: 37px;
+    align-items: start;
+    height: 100%;
+    width: 100%;
+    margin-top: 3vh;
+}
+#ul-PerfildoUsuario{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#ul-PerfildoUsuario-Escrita{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+#ul-itens-menu-lateral img{
+    width: 32px;
+    height: 32px;
+}
+#modo-pap, #versao {
+    font-size: 14px;
+    color: var(--aquele-azul);
+    margin-top: 20px;
+}
+#ul-PerfildoUsuario img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+#li-info-PAP{
+    width: 150px;
+    font-size: .9rem;
+    margin-top: auto;
+
+}
+#li-info-vers{
+    margin-top: auto;
+    padding-bottom: 15px;
+    font-size: 2.5rem;
+}
+#Player-Musica{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+#menu-lateral{
+    position: fixed;
+    width: 230px;
+}
+
+footer{
+    
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: rgba(255, 255, 255, 1);
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 900;
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.1);
+}
+#InfoMusica {
+    min-width: 180px;
+    max-width: 250px;
+    flex-shrink: 0;
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    min-width: 180px;
+    gap: 15px;
+    flex-shrink: 0;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+    
+#Musica-Imagem {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+#Player-Musica {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+.BotoesMusica-Default {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#Player-Musica-Botao-ProgressiveBar-div {
+    height: 100%;
+    width: 0;
+    background-color: var(--aquele-azul);
+    border-radius: 2px;
+    position: relative;
+    transition: width 0.1s linear;
+}
+
+#Player-Musica-Botao-ProgressiveBar-div::before {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background-color: var(--aquele-azul);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+#ProgressiveBar-container{
+    width: 100%;
+    height: 4px;
+    background-color: #e0e0e0;
+    border-radius: 2px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+#ProgressiveBar-container:hover #Player-Musica-Botao-ProgressiveBar-div::before {
+    opacity: 1;
+}
+#Player-Musica-Botao-ProgressiveBar-ul {
+    flex-grow: 1;
+    max-width: 900px;
+    transition: max-width 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#Player-Musica-Botao-ProgressiveBar-ul li:nth-child(2) {
+    flex-grow: 1;
+    min-width: 100px;
+}
+.BotoesMusica-Default-img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.2s;
+}
+
+.MusicaBotao:hover .BotoesMusica-Default-img {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+#content1{
+    width: calc(100% - 350px);
+    margin-left: 230px;
+    padding-left: 50px;
+    margin-top: 35px;
+}
+#search-bar{
+    width: calc(100% - 350px);
+    border-radius: 15px;
+    border: none;
+    background-color: #D9D9D9;
+    height: 40px;
+    outline: none;
+    background-image: url('assets/imgs/Lupa.svg');
+    background-size: 20px 20px;
+    background-position: 8px center;
+    background-repeat: no-repeat;
+    padding-left: 45px;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+#Player-Musica-Botao-Volume{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    
+    
+}
+#btn-volume {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    position: relative;
+}
+
+#volume-slider {
+    width: 100px;
+    height: 4px;
+    cursor: pointer;
+    accent-color: var(--aquele-azul);
+    transform: rotate(-90deg);
+    margin: 0;
+    min-width: 100px; 
+    transform-origin: center;
+    transition: all 0.3s ease;
+}
+#volume-slider:hover {
+    transform: rotate(-90deg) scaleY(1.2);
+}
+#slider-div{
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    background-color: var(--aquele-azul);
+    height: 140px;
+    width: 40px;
+    z-index: 100; 
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border: 1px solid var(--aquele-azul);
+    background-color: var(--aquele-azul);
+    backdrop-filter: blur(1px);
+    transition: all 0.15s ease-out;
+}
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--aquele-azul);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#volume-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: var(--aquele-azul);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.MusicaBotao:hover #slider-div,
+.MusicaBotao:focus-within #slider-div {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease-out;
+}
+#logado{
+    display: none;
+}
+#nlogado{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+#loginBtn{
+    padding: 5% 10%;
+    letter-spacing: 1.5px;
+    background-color: rgba(43, 63, 108, .2);
+    box-shadow: 0 1px 5px var(--textoinfo);
+    transition: all .5s ease-in-out;
+    border-radius: 20px;
+}
+#loginBtn:hover{
+    background-color: rgba(43, 63, 108, .4);
+    transition: all .2s ease-in-out;
+}
+#loginBtn span{
+    
+    color: rgba(43, 63, 108, 1);
+}
+#sumiu{
+    display: none;
+}
+.Musicas-do-search{
+    background-color: yellow;
+    border-radius: 2vh;
+    width: 100%;
+}
+#content-do-search{
+    margin-top: 20px;
+    width: calc(100% - 350px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-columns:repeat( 2, 1fr );
+    gap: 4%
+}
+.recomenda-base{
+    background-color: rgba(189, 189, 189, 0.541);
+    width: 100%;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#aba-direita{
+    margin-top: 3vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+#recomendadasEmenudireito{
+    display: flex;
+    width: 100%;
+}
+#menu-aba-direita{
+    display: flex;
+    justify-content: right;
+    margin-right: 30px;
+    align-items: center;
+    gap: 10%;
+    margin-bottom: 5vh;
+}
+.centroletra{
+    text-align: center;
+}
+#sugestoespseguir{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    flex: 1;
+    overflow-y: auto;
+}
+#boxpseguir{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3vh;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.Pseguir{
+    background-color: rgba(220, 220, 220, 0.6);
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    padding: 3% 45% 3% 5% ;
+    border-radius: 20px;
+}
+.escrita-perfilseguir{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 1200px) {
+    #Player-Musica-Botao-ProgressiveBar-ul {
+        max-width: 800px;
+    }
+}
+@media (max-width: 900px) {
+    #Player-Musica-Botao-ProgressiveBar-div {
+        width: 200px;
+    }
+    
+    .BotoesMusica-Default {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        height: 70px;
+        padding: 0 15px;
+    }
+    
+    #InfoMusica {
+        min-width: 160px;
+        gap: 10px;
+    }
+    
+    #Musica-Imagem {
+        width: 40px;
+        height: 40px;
+    }
+    
+    #Player-Musica {
+        gap: 10px;
+    }
+    
+    #Player-Musica-Botao-ProgressiveBar-div {
+        width: 150px;
+    }
+}
+
+@media (max-width: 600px) {
+    footer {
+        height: 60px;
+        padding: 0 10px;
+    }
+    
+    #InfoMusica {
+        min-width: 120px;
+    }
+    
+    #Musica-Nome-span, #Musica-Artista-span {
+        display: none;
+    }
+    
+    #Player-Musica-Botao-ProgressiveBar-ul span {
+        display: none;
+    }
+    
+    #Player-Musica-Botao-ProgressiveBar-div {
+        width: 100px;
+    }
+    
+    .BotoesMusica-Default-img {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 400px) {
+    #Player-Musica-Botao-ProgressiveBar-div {
+        display: none;
+    }
+    
+    #Player-Musica {
+        justify-content: flex-end;
+    }
+}
