@@ -14,7 +14,7 @@ const allowedOrigins = [
   'http://localhost',
   'http://localhost:5500',
   'http://127.0.0.1',
-  'https://seu-projeto.vercel.app'
+  'https://socialmedia-three-indol.vercel.app/'
 ];
 
 const corsOptions = {
