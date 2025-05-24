@@ -32,6 +32,13 @@ app.get('/api/test', (req, res) => {
   res.json({ message: "API funcionando!" });
 });
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
