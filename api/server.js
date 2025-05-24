@@ -28,8 +28,8 @@ const corsOptions = {
   methods: ['GET', 'POST', 'OPTIONS'],
   credentials: true
 };
-app.get('/', (req, res) => {
-  res.send('Backend rodando! Acesse /api para endpoints.');
+app.get('/api/test', (req, res) => {
+  res.json({ message: "API funcionando!" });
 });
 
 app.use(cors(corsOptions));
@@ -83,3 +83,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando na porta ${PORT}`);
 });
+module.exports = app;
