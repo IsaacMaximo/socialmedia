@@ -14,7 +14,7 @@ const allowedOrigins = [
   'http://localhost',
   'http://localhost:5500',
   'http://127.0.0.1',
-  'https://socialmedia-three-indol.vercel.app/'
+  'https://socialmedia-three-indol.vercel.app'
 ];
 
 const corsOptions = {
@@ -28,6 +28,9 @@ const corsOptions = {
   methods: ['GET', 'POST', 'OPTIONS'],
   credentials: true
 };
+app.get('/', (req, res) => {
+  res.send('Backend rodando! Acesse /api para endpoints.');
+});
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
