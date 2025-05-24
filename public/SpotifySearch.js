@@ -1,4 +1,4 @@
-export async function PesquisaSpotify(query, limit = 5) {
+export async function PesquisaSpotify(query, limit = 6) {
     function decodeToken(token) {
         if (!token || token === "undefined" || token === "null") 
             {
