@@ -91,7 +91,6 @@ export async function fetchProfile() {
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
-        // Se nada estiver tocando (204 No Content)
         if (response.status === 204) {
             console.log('Nenhuma música está tocando no momento.');
             return null;

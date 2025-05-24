@@ -10,12 +10,21 @@ const getAuthHeader = () => {
   ).toString('base64');
 };
 
+const allowedOrigins = [
+  'http://localhost',
+  'http://localhost:5500',
+  'http://127.0.0.1',
+  'https://seu-projeto.vercel.app'
+];
+
 const corsOptions = {
-  origin: [
-    'http://localhost',
-    'http://localhost:5500',
-    'http://127.0.0.1'
-  ],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Origem não permitida pelo CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'OPTIONS'],
   credentials: true
 };
