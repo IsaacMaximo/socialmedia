@@ -2,7 +2,7 @@ export async function exchangeCodeForToken(code) {
   try {
     const codeVerifier = localStorage.getItem('code_verifier');
     const redirectUri = `${window.location.origin}/callback.html`;
-
+    const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
     const response = await fetch('/api/auth/token', {
       method: 'POST',
       headers: {
