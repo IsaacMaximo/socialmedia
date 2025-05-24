@@ -365,15 +365,15 @@
     console.log("DESLOGAR -> localStorage.removeItem('spotify_access_token');")
 </script>
 
-<script type="module" src="http://localhost/socialmedia/api/OAuth.js"></script>
-<script src="http://localhost/socialmedia/api/chatmusicaglobal.js"></script>
-<script type="module" src="http://localhost/socialmedia/api/login.js"></script>
-<script src="botoes.js"></script>
+<script type="module" src="js/auth/OAuth.js"></script>
+<script src="js/chatmusicaglobal.js"></script>
+<script type="module" src="js/auth/login.js"></script>
+<script src="js/botoes.js"></script>
 
 
 
 <script type="module">
-    import { PesquisaSpotify } from './SpotifySearch.js';
+    import { PesquisaSpotify } from './js/SpotifySearch.js';
 
     document.addEventListener('DOMContentLoaded', () => {
         const searchInput = document.getElementById('search-bar');

@@ -1,67 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Processando Callback</title>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            const urlParams = new URLSearchParams(window.location.search);
-            const code = urlParams.get('code');
-            const error = urlParams.get('error');
-
-            function handleError(message) {
-                console.error(message);
-                localStorage.setItem('spotify_auth_error', message);
-                window.location.href = 'index.html';
-            }
-
-            function handleSuccess(data) {
-                localStorage.setItem('spotify_access_token', data.access_token);
-                if (data.refresh_token) {
-                    localStorage.setItem('spotify_refresh_token', data.refresh_token);
+    <title>Autenticação Spotify</title>
+    <script type="module">
+        import { exchangeCodeForToken } from '/js/auth/OAuth.js';
+        
+        async function handleCallback() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const code = params.get('code');
+                const error = params.get('error');
+                
+                if (error) {
+                    throw new Error(`Erro do Spotify: ${error}`);
                 }
-                window.location.href = 'index.html';
-            }
-
-            if (error) {
-                handleError(`Erro do Spotify: ${error}`);
-                return;
-            }
-
-            if (!code) {
-                handleError("Nenhum código de autorização recebido");
-                return;
-            }
-
-            const codeVerifier = localStorage.getItem('code_verifier');
-            if (!codeVerifier) {
-                handleError("Code verifier não encontrado");
-                return;
-            }
-
-            fetch('http://localhost:3000/api/spotify-token', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    code: code,
-                    code_verifier: codeVerifier
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    throw new Error(data.error);
+                
+                if (code) {
+                    await exchangeCodeForToken(code);
+                    window.opener.postMessage('authSuccess', window.location.origin);
+                    window.close();
+                } else {
+                    throw new Error('Código de autorização não encontrado');
                 }
-                handleSuccess(data);
-            })
-            .catch(error => {
-                handleError(`Falha na autenticação: ${error.message}`);
-            });
-        });
+            } catch (error) {
+                console.error('Erro no callback:', error);
+                window.opener.postMessage('authError', window.location.origin);
+                document.getElementById('message').textContent = 'Erro na autenticação. Feche esta janela e tente novamente.';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', handleCallback);
     </script>
 </head>
 <body>
-    <p>Processando autenticação...</p>
+    <div id="message">Processando autenticação...</div>
 </body>
 </html>

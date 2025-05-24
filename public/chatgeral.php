@@ -23,7 +23,7 @@ $musicId = preg_match('/^[a-zA-Z0-9]{22}$/', $musicId) ? $musicId : '';
 ?>
 
 <script type="module">
-    import { buscarMusicaPorID } from './SpotifySearchPorID.js';
+    import { buscarMusicaPorID } from './js/SpotifySearchPorID.js';
     const musicId = "<?php echo addslashes($musicId); ?>";
     
 if (musicId) {

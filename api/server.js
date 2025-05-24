@@ -3,13 +3,17 @@ const express = require('express');
 const cors = require('cors');
 const fetch = require('node-fetch');
 
-const app = express();
-const getAuthHeader = () => {
-  return 'Basic ' + Buffer.from(
-    `${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`
-  ).toString('base64');
-};
+// Validação de variáveis de ambiente
+const requiredEnvVars = ['CLIENT_ID', 'CLIENT_SECRET', 'REDIRECT_URI'];
+for (const envVar of requiredEnvVars) {
+  if (!process.env[envVar]) {
+    throw new Error(`Variável de ambiente ${envVar} não definida`);
+  }
+}
 
+const app = express();
+
+// Configuração CORS
 const allowedOrigins = [
   'http://localhost',
   'http://localhost:5500',
@@ -26,27 +30,28 @@ const corsOptions = {
     }
   },
   methods: ['GET', 'POST', 'OPTIONS'],
-  credentials: true
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
 };
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+app.use(express.json());
+
+// Helper para auth header
+const getAuthHeader = () => {
+  return 'Basic ' + Buffer.from(
+    `${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`
+  ).toString('base64');
+};
+
+// Rotas
 app.get('/api/test', (req, res) => {
   res.json({ message: "API funcionando!" });
 });
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
-
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
-
-app.use(express.json());
-
-app.post('/api/spotify-token', async (req, res) => {
+app.post('/api/spotify-token', async (req, res, next) => {
   try {
-    console.log("Recebida requisição de token");
     const { code, code_verifier } = req.body;
 
     if (!code || !code_verifier) {
@@ -69,7 +74,7 @@ app.post('/api/spotify-token', async (req, res) => {
 
     const data = await response.json();
     
-    if (data.error) {
+    if (!response.ok) {
       console.error("Erro do Spotify:", data);
       return res.status(400).json(data);
     }
@@ -77,8 +82,7 @@ app.post('/api/spotify-token', async (req, res) => {
     res.json(data);
     
   } catch (error) {
-    console.error("Erro no endpoint:", error);
-    res.status(500).json({ error: error.message });
+    next(error); // Passa para o middleware de erro
   }
 });
 
@@ -86,8 +90,15 @@ app.get('/health', (req, res) => {
   res.send('Servidor operacional');
 });
 
+// Middleware de erro global
+app.use((err, req, res, next) => {
+  console.error('Erro:', err.stack);
+  res.status(500).json({ error: 'Algo deu errado!' });
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando na porta ${PORT}`);
 });
+
 module.exports = app;
