@@ -1,12 +1,9 @@
 export async function buscarMusicaPorID(id) {
     try {
-        // Verificação do token
         const token = localStorage.getItem('spotify_access_token');
         if (!token || ['undefined', 'null', 'NaN'].includes(token)) {
             throw new Error('Token do Spotify não encontrado');
         }
-
-        // Requisição à API do Spotify
         const response = await fetch(`https://api.spotify.com/v1/tracks/${id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,

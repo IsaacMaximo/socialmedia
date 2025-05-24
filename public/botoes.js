@@ -28,7 +28,7 @@ musica.addEventListener('timeupdate', atualizarBarraProgresso);
 
 let ultimoTempoAtual = -1;
 function animarTempo() {
-    if (Math.abs(musica.currentTime - ultimoTempoAtual) >= 0.5) { // Atualiza a cada ~0.5s
+    if (Math.abs(musica.currentTime - ultimoTempoAtual) >= 0.5) {
         atualizarTempoAtual();
         ultimoTempoAtual = musica.currentTime;
     }
@@ -88,7 +88,7 @@ musica.addEventListener('pause', atualizarIcone);
 
 
 function atualizarBarraProgresso() {
-    if (!isDragging) { // Só atualiza automaticamente quando não estiver arrastando
+    if (!isDragging) {
         const progresso = (musica.currentTime / musica.duration) * 100;
         ProgressiveBar.style.width = `${progresso}%`;
     }
@@ -120,9 +120,9 @@ ProgressiveBar_container.addEventListener('mousedown', (e) => {
     const percent = (e.clientX - rect.left) / rect.width;
     novoTime = percent * musica.duration;
     
-    // Atualiza visualmente mas não altera o áudio ainda
+
     ProgressiveBar.style.width = `${percent * 100}%`;
-    ProgressiveBar.style.transition = 'none'; // Remove animação durante arraste
+    ProgressiveBar.style.transition = 'none';
     
     e.preventDefault();
 });
@@ -135,16 +135,14 @@ document.addEventListener('mousemove', (e) => {
     const percent = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
     novoTime = percent * musica.duration;
     
-    // Atualiza apenas visualmente
     ProgressiveBar.style.width = `${percent * 100}%`;
 });
 
 document.addEventListener('mouseup', () => {
     if (isDragging) {
         isDragging = false;
-        ProgressiveBar.style.transition = ''; // Restaura animação
+        ProgressiveBar.style.transition = '';
         
-        // Só atualiza o tempo da música AO SOLTAR
         musica.currentTime = novoTime;
     }
 });
